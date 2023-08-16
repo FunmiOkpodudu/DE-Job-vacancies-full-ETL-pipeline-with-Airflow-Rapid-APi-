@@ -38,7 +38,7 @@ def get_data_from_api():
     querystring = {"query":"Data Engineer in Ontario, Canada","page":"1","num_pages":"1","date_posted":"month"}
 
     headers = {
-	"X-RapidAPI-Key": [YOUR_API_KEY],
+	"X-RapidAPI-Key": [Rapid Key],
 	"X-RapidAPI-Host": "jsearch.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
@@ -129,7 +129,7 @@ df_rapid = translate_extractions_to_dataframe_and_transform(employer_website, jo
 
 
 default_args={
-    'owner':'byron',
+    'owner':'funmi',
     'retries':5,
     'retry_delay':timedelta(minutes=2)
     
@@ -160,7 +160,7 @@ with DAG(
 load_db=PythonOperator(
     task_id='load_db',
     python_callable=to_sql_task,
-    op_args=[df_rapid,'new_rapid_api_jobs']
+    op_args=[df_rapid,'new_rapid_api_jobs1']
     
 )
     
